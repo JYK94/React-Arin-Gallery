@@ -44,8 +44,21 @@ body {
 }
 
 .content {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 500px;
+}
+
+.imgItem {
   padding: 15px;
   margin: 8px;
   text-align: left;
-  border: '1px solid white';
+  float: left;
+}
+
+.imgItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
