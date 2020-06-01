@@ -31,14 +31,13 @@ class App extends Component {
           {/* content 내부 */}
           {this.state.bbsInfo ? this.state.bbsInfo.map(item => {
               return <MainForm
-                key={item.key}
-                name={item.name}
-                bbsNo={item.bbsNo}
-                content={item.content}
-                seq={item.seq}
-                goodCnt={item.goodCnt}
+                key={item.BBS_NO}
+                name={item.USER_NM}
+                bbsNo={item.BBS_NO}
+                content={item.CONTENT}
+                seq={item.SEQ}
                 likeCnt={item.likeCnt}
-                nSrc={item.nSrc}
+                nSrc={item.FILE_PATH}
               ></MainForm>
             }) : ''}
           </div>
