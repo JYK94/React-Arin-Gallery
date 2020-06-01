@@ -2,34 +2,23 @@ import React, { Component } from 'react';
 import './App.css';
 import MainForm from './components/MainForm'
 
-const bbsInfo = [
-  {
-    name : '아린',
-    bbsNo : 'ARIN-0001',
-    content : 'like arin',
-    seq : 1,
-    likeCnt : 3,
-    nSrc : '/images/5.jpg'
-  },
-  {
-    name : '아린2',
-    bbsNo : 'ARIN-0002',
-    content : 'like arin3',
-    seq : 2,
-    likeCnt : 2,
-    nSrc : '/images/2.jpg'
-  },
-  {
-    name : '아린3',
-    bbsNo : 'ARIN-0003',
-    content : 'like arin3',
-    seq : 3,
-    likeCnt : 5,
-    nSrc : '/images/3.jpg'
-  }
-]
-
 class App extends Component {
+  state = {
+    bbsInfo: ''
+  }
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({bbsInfo: res}))
+      .catch(err => console.log(err));
+  }
+
+  // node.js 비동기식 호출
+  callApi = async() => {
+    const response = await fetch('/api/bbsInfo');
+    const body = await response.json();   // json형식으로 데이터 get
+    return body;
+  }
 
   render() {
     return (
@@ -40,8 +29,9 @@ class App extends Component {
 
         <div className="content">
           {/* content 내부 */}
-          {bbsInfo.map(item => {
+          {this.state.bbsInfo ? this.state.bbsInfo.map(item => {
               return <MainForm
+                key={item.key}
                 name={item.name}
                 bbsNo={item.bbsNo}
                 content={item.content}
@@ -50,7 +40,7 @@ class App extends Component {
                 likeCnt={item.likeCnt}
                 nSrc={item.nSrc}
               ></MainForm>
-            })}
+            }) : ''}
           </div>
        </div>
     );
