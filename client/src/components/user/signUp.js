@@ -2,7 +2,7 @@ import React from 'react'
 
 import { post } from 'axios';
 
-class signUp extends React.Component {
+class SignUp extends React.Component {
 
     constructor(props) {
 
@@ -10,7 +10,7 @@ class signUp extends React.Component {
 
         this.state = {
 
-            userId: null,
+            userId: '',
 
             userName: '',
 
@@ -29,7 +29,7 @@ class signUp extends React.Component {
 
     }
 
-    handleFormSubmit(e) {
+    handleFormSubmit(e) {       // submit
 
         e.preventDefault()
 
@@ -45,7 +45,7 @@ class signUp extends React.Component {
 
 
 
-    handleFileChange(e) {
+    handleFileChange(e) {       // file
 
         this.setState({
 
@@ -58,72 +58,52 @@ class signUp extends React.Component {
     }
 
 
-    handleValueChange(e) {
+    handleValueChange(e) {      // valueChange Event
+        const rName = e.target.name;
 
+        const passStyle = rName === "password"
+                            ? e.target.value < 4 ? "red" : "green"
+                            : "" ;
+        // password Check
+        const passStyle2 = rName === "password2"
+                            ? e.target.value != this.state.password ? "red" : "green"
+                            : "" ;
+console.log('passStyle2 : ' + passStyle2); 
         let nextState = {};
-
         nextState[e.target.name] = e.target.value;
-
         this.setState(nextState);
-
     }
 
     doSignUp(){
-
-        const url = '/api/bbsInfo';
-
+        const url = '/api/userInfo';
         const formData = new FormData();
 
         formData.append('userId',  this.state.userId)
-
         formData.append('userName',this.state.userName)
-
         formData.append('email',   this.state.email)
-
+        formData.append('password',   this.state.password)
         const config = {
-
             headers: {
-
                 'content-type': 'multipart/form-data'
-
             }
-
         }
 
         return post(url, formData, config)
-
     }
 
-
-
-render() {
-
-return (
-
-<form onSubmit={this.handleFormSubmit}>
-
-<h1>고객 추가</h1>
-
-프로필 이미지: <input type="file" name="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
-
-이름: <input type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
-
-생년월일: <input type="text" name="birthday" value={this.state.birthday} onChange={this.handleValueChange} /><br/>
-
-성별: <input type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br/>
-
-직업: <input type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br/>
-
-<button type="submit">추가하기</button>
-
-</form>
-
-)
-
+    render() {
+        return (
+            <form onSubmit={this.handleFormSubmit}>
+                <h1>Sign Up</h1>
+                <input type="text" name="userId" placeholder="User ID" value={this.state.userId} onChange={this.handleValueChange} /><br/>
+                <input type="password" name="password" placeholder="Password(4~12)" value={this.state.password} onChange={this.handleValueChange} /><br/>
+                <input type="password" name="password2" placeholder="Confirm Password" onChange={this.handleValueChange} /><br/>
+                <input type="text" name="userName" placeholder="User Name" value={this.state.userName} onChange={this.handleValueChange} /><br/>
+                <input type="text" name="email" placeholder="E-mail" value={this.state.email} onChange={this.handleValueChange} /><br/>
+                <button type="submit">signUp</button>
+            </form>
+        )
+    }
 }
 
-}
-
-
-
-export default signUp
+export default SignUp
