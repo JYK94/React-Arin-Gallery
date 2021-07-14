@@ -43,8 +43,6 @@ class SignUp extends React.Component {
 
     }
 
-
-
     handleFileChange(e) {       // file
 
         this.setState({
@@ -61,16 +59,16 @@ class SignUp extends React.Component {
     handleValueChange(e) {      // valueChange Event
         const rName = e.target.name;
 
-        const passStyle = rName === "password"
-                            ? e.target.value < 4 ? "red" : "green"
-                            : "" ;
+        // const passStyle = rName === "password"
+        //                     ? e.target.value < 4 ? "red" : "green"
+        //                     : "" ;
         // password Check
-        const passStyle2 = rName === "password2"
-                            ? e.target.value != this.state.password ? "red" : "green"
-                            : "" ;
-console.log('passStyle2 : ' + passStyle2); 
+        // const passStyle2 = rName === "password2"
+        //                     ? e.target.value !== this.state.password ? "red" : "green"
+        //                     : "" ;
+// console.log('passStyle2 : ' + passStyle2);
         let nextState = {};
-        nextState[e.target.name] = e.target.value;
+        nextState[rName] = e.target.value;
         this.setState(nextState);
     }
 
@@ -78,9 +76,9 @@ console.log('passStyle2 : ' + passStyle2);
         const url = '/api/userInfo';
         const formData = new FormData();
 
-        formData.append('userId',  this.state.userId)
-        formData.append('userName',this.state.userName)
-        formData.append('email',   this.state.email)
+        formData.append('userId',     this.state.userId)
+        formData.append('userName',   this.state.userName)
+        formData.append('email',      this.state.email)
         formData.append('password',   this.state.password)
         const config = {
             headers: {
