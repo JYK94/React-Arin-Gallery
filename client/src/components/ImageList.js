@@ -1,13 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import Gallery from 'react-photo-gallery';
-import '../App.css'; // Or a specific CSS file for ImageList
+import Masonry from 'react-masonry-css';
+import '../App.css';
+
+const breakpointColumnsObj = {
+  default: 4,
+  1100: 3,
+  700: 2,
+  500: 1
+};
+
+const styles = {
+  galleryContainer: {
+    padding: '10px',
+    width: '100%',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  imageWrapper: {
+    position: 'relative',
+    margin: '8px',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    transition: 'transform 0.2s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.01)',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+    },
+  },
+  image: {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+    borderRadius: '8px',
+  },
+  masonryGrid: {
+    display: 'flex',
+    marginLeft: '-8px',
+    width: 'auto',
+  },
+  masonryColumn: {
+    paddingLeft: '8px',
+    backgroundClip: 'padding-box',
+  },
+};
 
 const ImageList = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Source of image filenames (could be a prop or fetched from an API)
-  const imageFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpeg', '9.jpeg', '10.jpeg'];
+  const imageFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'];
 
   useEffect(() => {
     const fetchImageDimensions = async () => {
@@ -62,11 +105,40 @@ const ImageList = () => {
     return <p>No images found or all images failed to load.</p>;
   }
 
+  // 이미지의 종횡비를 고려한 스타일 계산
+  const getImageStyle = (width, height) => {
+    const aspectRatio = width / height;
+    return {
+      ...styles.image,
+      aspectRatio: aspectRatio,
+    };
+  };
+
   return (
-    <div className="image-gallery-container">
-      <Gallery photos={photos} />
+    <div style={styles.galleryContainer}>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column"
+        style={styles.masonryGrid}
+        columnAttrs={{
+          className: 'masonry-grid_column',
+          style: styles.masonryColumn,
+        }}
+      >
+        {photos.map((photo, index) => (
+          <div key={index} style={styles.imageWrapper}>
+            <img 
+              src={photo.src} 
+              alt={`Gallery item ${index + 1}`}
+              style={getImageStyle(photo.width, photo.height)}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </Masonry>
     </div>
-  );
+  )
 };
 
 export default ImageList;
