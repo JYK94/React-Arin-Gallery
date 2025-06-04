@@ -75,3 +75,66 @@ body {
   height: 100%;
   object-fit: contain;
 }
+
+/* Styles for the image gallery */
+.image-list-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center items horizontally */
+  gap: 16px; /* Spacing between items */
+  padding: 16px; /* Padding around the container */
+}
+
+/* Styles for individual image items (MainForm wraps BbsImg and BbsInfo) */
+.imgItem {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 16px; /* Or use gap in flex container */
+  width: calc(33.333% - 32px); /* Example: 3 items per row, accounting for gap and padding */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  background-color: #fff;
+  display: flex; /* Use flex to arrange BbsImg and BbsInfo */
+  flex-direction: column; /* Stack image and info vertically */
+}
+
+.imgItem .BbsImg img { /* Target img tag within BbsImg component */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #eee; /* Optional: line between image and text */
+  margin-bottom: 8px; /* Space between image and text */
+}
+
+/* Ensure BbsInfo text is styled appropriately */
+.imgItem .BbsInfo p {
+  margin: 4px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.imgItem .BbsInfo p:first-child { /* Example: Style for the name/title */
+  font-weight: bold;
+  color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .imgItem {
+    width: calc(50% - 32px); /* 2 items per row on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .imgItem {
+    width: calc(100% - 32px); /* 1 item per row on small screens */
+  }
+}
+
+/* Styling for loading and no more images messages */
+.App .content p { /* Target p tags within the content div for loading/no more messages */
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #666;
+}
