@@ -1,21 +1,18 @@
 import React from 'react';
-import MainForm from './MainForm';
 import '../App.css'; // Or a specific CSS file for ImageList
 
-const ImageList = ({ images }) => {
+const ImageList = () => { // Removed images prop
+  const imageFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg']; // Added more images based on previous context
   return (
-    <div className="image-list-container"> {/* Add a class for styling */}
-      {images.map(item => (
-        <MainForm
-          key={item.BBS_NO + '-' + item.SEQ} // Create a unique key
-          name={item.USER_NM}
-          bbsNo={item.BBS_NO}
-          title={item.TITLE}
-          content={item.CONTENT}
-          seq={item.SEQ}
-          likeCnt={item.LIKE_CNT}
-          nSrc={item.FILE_PATH}
-        />
+    <div className="image-gallery-container">
+      {imageFiles.map(filename => (
+        <div key={filename} className="gallery-item"> {/* Added a wrapper div for better styling if needed */}
+          <img 
+            src={`${process.env.PUBLIC_URL}/images/${filename}`} 
+            alt={filename} 
+            className="gallery-image" 
+          />
+        </div>
       ))}
     </div>
   );

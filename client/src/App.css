@@ -76,61 +76,6 @@ body {
   object-fit: contain;
 }
 
-/* Styles for the image gallery */
-.image-list-container {
-  display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  justify-content: center; /* Center items horizontally */
-  gap: 16px; /* Spacing between items */
-  padding: 16px; /* Padding around the container */
-}
-
-/* Styles for individual image items (MainForm wraps BbsImg and BbsInfo) */
-.imgItem {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 8px;
-  margin-bottom: 16px; /* Or use gap in flex container */
-  width: calc(33.333% - 32px); /* Example: 3 items per row, accounting for gap and padding */
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-  background-color: #fff;
-  display: flex; /* Use flex to arrange BbsImg and BbsInfo */
-  flex-direction: column; /* Stack image and info vertically */
-}
-
-.imgItem .BbsImg img { /* Target img tag within BbsImg component */
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-bottom: 1px solid #eee; /* Optional: line between image and text */
-  margin-bottom: 8px; /* Space between image and text */
-}
-
-/* Ensure BbsInfo text is styled appropriately */
-.imgItem .BbsInfo p {
-  margin: 4px 0;
-  font-size: 0.9em;
-  color: #333;
-}
-
-.imgItem .BbsInfo p:first-child { /* Example: Style for the name/title */
-  font-weight: bold;
-  color: #000;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .imgItem {
-    width: calc(50% - 32px); /* 2 items per row on medium screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .imgItem {
-    width: calc(100% - 32px); /* 1 item per row on small screens */
-  }
-}
-
 /* Styling for loading and no more images messages */
 .App .content p { /* Target p tags within the content div for loading/no more messages */
   text-align: center;
@@ -138,3 +83,31 @@ body {
   font-style: italic;
   color: #666;
 }
+
+/* ADDED STYLES FOR THE NEW GALLERY */
+.image-gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive layout */
+  gap: 10px; /* Spacing between images */
+  padding: 10px; /* Padding inside the container */
+}
+
+.gallery-item {
+  width: 100%;
+  padding-bottom: 100%; /* Trick for 1:1 aspect ratio */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dbdbdb; /* Instagram-like border */
+  background-color: #222; /* Darker background for items before image loads or if image is transparent */
+}
+
+.gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill the area while maintaining aspect ratio */
+  display: block;
+}
+/* END OF ADDED STYLES */
