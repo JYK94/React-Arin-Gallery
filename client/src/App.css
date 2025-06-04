@@ -84,30 +84,20 @@ body {
   color: #666;
 }
 
-/* ADDED STYLES FOR THE NEW GALLERY */
+/* STYLES FOR REACT-PHOTO-GALLERY */
 .image-gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive layout */
-  gap: 10px; /* Spacing between images */
-  padding: 10px; /* Padding inside the container */
+  width: 90%; /* Or your preferred width */
+  max-width: 1200px; /* Example max width */
+  margin: 20px auto; /* Centering and some vertical margin */
+  padding: 0; /* Reset padding if any was there */
+  /* Ensure no display: grid or display: flex here that would conflict */
 }
 
-.gallery-item {
-  width: 100%;
-  padding-bottom: 100%; /* Trick for 1:1 aspect ratio */
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #dbdbdb; /* Instagram-like border */
-  background-color: #222; /* Darker background for items before image loads or if image is transparent */
-}
-
-.gallery-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Fill the area while maintaining aspect ratio */
-  display: block;
-}
-/* END OF ADDED STYLES */
+/*
+  The .gallery-item and .gallery-image classes are no longer needed here,
+  as react-photo-gallery handles its own internal structure and styling.
+  Any custom styling for images themselves, if needed, would typically be
+  done via props passed to react-photo-gallery or by targeting its generated classes
+  (though the latter is less robust to library updates).
+*/
+/* END OF STYLES FOR REACT-PHOTO-GALLERY */
