@@ -1,47 +1,70 @@
-import React, { useEffect, useRef } from 'react';
-import Macy from 'macy';
+import React, { useState, useEffect } from 'react';
+import Gallery from 'react-photo-gallery';
 import '../App.css'; // Or a specific CSS file for ImageList
 
-const ImageList = () => { // Removed images prop
-  const imageFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg']; // Added more images based on previous context
-  const galleryRef = useRef(null);
-  const macyInstance = useRef(null);
+const ImageList = () => {
+  const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Source of image filenames (could be a prop or fetched from an API)
+  const imageFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg'];
 
   useEffect(() => {
-    if (galleryRef.current && imageFiles.length > 0) {
-      macyInstance.current = Macy({
-        container: galleryRef.current,
-        trueOrder: false,
-        waitForImages: false,
-        margin: 24,
-        columns: 3,
-        breakAt: {
-          1200: 5,
-          940: 4,
-          520: 2,
-          400: 1,
-        },
-      });
-    }
+    const fetchImageDimensions = async () => {
+      setLoading(true);
+      const loadedPhotos = [];
+      let imagesProcessed = 0;
 
-    return () => {
-      if (macyInstance.current) {
-        macyInstance.current.remove();
+      if (imageFiles.length === 0) {
+        setPhotos([]);
+        setLoading(false);
+        return;
       }
+
+      imageFiles.forEach(filename => {
+        const img = new Image();
+        const src = `${process.env.PUBLIC_URL}/images/${filename}`;
+        img.src = src;
+
+        img.onload = () => {
+          loadedPhotos.push({
+            src: src,
+            width: img.naturalWidth,
+            height: img.naturalHeight,
+          });
+          imagesProcessed++;
+          if (imagesProcessed === imageFiles.length) {
+            setPhotos(loadedPhotos);
+            setLoading(false);
+          }
+        };
+
+        img.onerror = () => {
+          console.error(`Error loading image: ${filename}`);
+          imagesProcessed++;
+          // Optionally, add a placeholder or skip
+          if (imagesProcessed === imageFiles.length) {
+            setPhotos(loadedPhotos); // Still update state with successfully loaded images
+            setLoading(false);
+          }
+        };
+      });
     };
-  }, [imageFiles.length]); // Re-run if the number of images changes, though not strictly necessary if images are static
+
+    fetchImageDimensions();
+  }, []); // Empty dependency array means this runs once on mount, as imageFiles is static here
+
+  if (loading) {
+    return <p>Loading images and dimensions...</p>;
+  }
+
+  if (photos.length === 0 && !loading) {
+    return <p>No images found or all images failed to load.</p>;
+  }
 
   return (
-    <div ref={galleryRef} className="image-gallery-container">
-      {imageFiles.map(filename => (
-        <div key={filename} className="gallery-item"> {/* Added a wrapper div for better styling if needed */}
-          <img 
-            src={`${process.env.PUBLIC_URL}/images/${filename}`} 
-            alt={filename} 
-            className="gallery-image" 
-          />
-        </div>
-      ))}
+    <div className="image-gallery-container">
+      <Gallery photos={photos} />
     </div>
   );
 };

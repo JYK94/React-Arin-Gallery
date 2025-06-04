@@ -84,38 +84,20 @@ body {
   color: #666;
 }
 
-/* ADDED STYLES FOR THE NEW GALLERY */
-/* Existing styles below were conflicting with Macy.js and have been commented out or removed. */
+/* STYLES FOR REACT-PHOTO-GALLERY */
 .image-gallery-container {
-  /* display: grid; */ /* Conflicted with Macy.js */
-  /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */ /* Conflicted with Macy.js */
-  /* gap: 10px; */ /* Macy handles margins */
-  /* padding: 10px; */ /* Can be kept if desired, but Macy's margin option is preferred for item spacing */
-  position: relative; /* Macy might need this */
+  width: 90%; /* Or your preferred width */
+  max-width: 1200px; /* Example max width */
+  margin: 20px auto; /* Centering and some vertical margin */
+  padding: 0; /* Reset padding if any was there */
+  /* Ensure no display: grid or display: flex here that would conflict */
 }
 
-.gallery-item {
-  /* width: 100%; */ /* This is fine, but Macy controls effective width via columns */
-  /* padding-bottom: 100%; */ /* Conflicted with Macy.js - aspect ratio handled by image content */
-  /* position: relative; */ /* Macy handles positioning */
-  /* overflow: hidden; */ /* Can be kept if desired */
-  /* border: 1px solid #dbdbdb; */ /* Optional: Keep for aesthetics */
-  /* background-color: #222; */ /* Optional: Keep for aesthetics */
-  width: 100%; /* Items should fill the column width Macy assigns */
-  margin-bottom: 24px; /* Consistent with Macy's margin option, or handle with Macy's margin alone */
-}
-
-.gallery-image {
-  /* position: absolute; */ /* Conflicted with Macy.js - image is direct content of gallery-item */
-  /* top: 0; */
-  /* left: 0; */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* object-fit: cover; */ /* Can be kept for image styling within its container */
-  display: block;
-  width: 100%;
-  height: auto; /* Allow image to define its height to maintain aspect ratio */
-  border-radius: 8px; /* Optional: for aesthetics */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: for aesthetics */
-}
-/* END OF ADDED STYLES */
+/*
+  The .gallery-item and .gallery-image classes are no longer needed here,
+  as react-photo-gallery handles its own internal structure and styling.
+  Any custom styling for images themselves, if needed, would typically be
+  done via props passed to react-photo-gallery or by targeting its generated classes
+  (though the latter is less robust to library updates).
+*/
+/* END OF STYLES FOR REACT-PHOTO-GALLERY */
