@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-arin-gallery/static/css/main.ea36b227.chunk.css",
+    "main.js": "/react-arin-gallery/static/js/main.e1eeca76.chunk.js",
+    "main.js.map": "/react-arin-gallery/static/js/main.e1eeca76.chunk.js.map",
+    "runtime-main.js": "/react-arin-gallery/static/js/runtime-main.39197ac2.js",
+    "runtime-main.js.map": "/react-arin-gallery/static/js/runtime-main.39197ac2.js.map",
+    "static/js/2.bf2b82fa.chunk.js": "/react-arin-gallery/static/js/2.bf2b82fa.chunk.js",
+    "static/js/2.bf2b82fa.chunk.js.map": "/react-arin-gallery/static/js/2.bf2b82fa.chunk.js.map",
+    "index.html": "/react-arin-gallery/index.html",
+    "precache-manifest.3e999935efb657525ca21cbf171416fc.js": "/react-arin-gallery/precache-manifest.3e999935efb657525ca21cbf171416fc.js",
+    "service-worker.js": "/react-arin-gallery/service-worker.js",
+    "static/css/main.ea36b227.chunk.css.map": "/react-arin-gallery/static/css/main.ea36b227.chunk.css.map",
+    "static/js/2.bf2b82fa.chunk.js.LICENSE.txt": "/react-arin-gallery/static/js/2.bf2b82fa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.39197ac2.js",
+    "static/js/2.bf2b82fa.chunk.js",
+    "static/css/main.ea36b227.chunk.css",
+    "static/js/main.e1eeca76.chunk.js"
+  ]
+}
