@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-arin-gallery/static/css/main.ea36b227.chunk.css",
-    "main.js": "/react-arin-gallery/static/js/main.e1eeca76.chunk.js",
-    "main.js.map": "/react-arin-gallery/static/js/main.e1eeca76.chunk.js.map",
-    "runtime-main.js": "/react-arin-gallery/static/js/runtime-main.39197ac2.js",
-    "runtime-main.js.map": "/react-arin-gallery/static/js/runtime-main.39197ac2.js.map",
-    "static/js/2.bf2b82fa.chunk.js": "/react-arin-gallery/static/js/2.bf2b82fa.chunk.js",
-    "static/js/2.bf2b82fa.chunk.js.map": "/react-arin-gallery/static/js/2.bf2b82fa.chunk.js.map",
-    "index.html": "/react-arin-gallery/index.html",
-    "precache-manifest.3e999935efb657525ca21cbf171416fc.js": "/react-arin-gallery/precache-manifest.3e999935efb657525ca21cbf171416fc.js",
-    "service-worker.js": "/react-arin-gallery/service-worker.js",
-    "static/css/main.ea36b227.chunk.css.map": "/react-arin-gallery/static/css/main.ea36b227.chunk.css.map",
-    "static/js/2.bf2b82fa.chunk.js.LICENSE.txt": "/react-arin-gallery/static/js/2.bf2b82fa.chunk.js.LICENSE.txt"
+    "main.css": "/React-Arin-Gallery/static/css/main.ea36b227.chunk.css",
+    "main.js": "/React-Arin-Gallery/static/js/main.050ee6c7.chunk.js",
+    "main.js.map": "/React-Arin-Gallery/static/js/main.050ee6c7.chunk.js.map",
+    "runtime-main.js": "/React-Arin-Gallery/static/js/runtime-main.16919106.js",
+    "runtime-main.js.map": "/React-Arin-Gallery/static/js/runtime-main.16919106.js.map",
+    "static/js/2.bf2b82fa.chunk.js": "/React-Arin-Gallery/static/js/2.bf2b82fa.chunk.js",
+    "static/js/2.bf2b82fa.chunk.js.map": "/React-Arin-Gallery/static/js/2.bf2b82fa.chunk.js.map",
+    "index.html": "/React-Arin-Gallery/index.html",
+    "precache-manifest.6619d594b50947ad4a5b16603905910a.js": "/React-Arin-Gallery/precache-manifest.6619d594b50947ad4a5b16603905910a.js",
+    "service-worker.js": "/React-Arin-Gallery/service-worker.js",
+    "static/css/main.ea36b227.chunk.css.map": "/React-Arin-Gallery/static/css/main.ea36b227.chunk.css.map",
+    "static/js/2.bf2b82fa.chunk.js.LICENSE.txt": "/React-Arin-Gallery/static/js/2.bf2b82fa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.39197ac2.js",
+    "static/js/runtime-main.16919106.js",
     "static/js/2.bf2b82fa.chunk.js",
     "static/css/main.ea36b227.chunk.css",
-    "static/js/main.e1eeca76.chunk.js"
+    "static/js/main.050ee6c7.chunk.js"
   ]
 }
