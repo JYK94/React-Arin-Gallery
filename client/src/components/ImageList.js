@@ -48,23 +48,55 @@ const styles = {
 const ImageList = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Source of image filenames (could be a prop or fetched from an API)
-  const imageFiles = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'];
+  const [imageFiles, setImageFiles] = useState([]);
 
   useEffect(() => {
+    // Function to get the count of images in the public/images directory
+    const getImageCount = async () => {
+      try {
+        let count = 1;
+        const checkImage = async (index) => {
+          const img = new Image();
+          const src = `${process.env.PUBLIC_URL}/images/${index}.jpg`;
+          
+          return new Promise((resolve) => {
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = src;
+          });
+        };
+
+        // Find the maximum number of images (up to 1000 to prevent infinite loops)
+        while (count <= 1000) {
+          const exists = await checkImage(count);
+          if (!exists) break;
+          count++;
+        }
+
+        // Generate array of existing image filenames
+        const files = Array.from({ length: count - 1 }, (_, i) => `${i + 1}.jpg`);
+        setImageFiles(files);
+        return files;
+      } catch (error) {
+        console.error('Error checking images:', error);
+        return [];
+      }
+    };
+
     const fetchImageDimensions = async () => {
       setLoading(true);
-      const loadedPhotos = [];
-      let imagesProcessed = 0;
-
-      if (imageFiles.length === 0) {
+      const files = await getImageCount();
+      
+      if (files.length === 0) {
         setPhotos([]);
         setLoading(false);
         return;
       }
 
-      imageFiles.forEach(filename => {
+      const loadedPhotos = [];
+      let imagesProcessed = 0;
+
+      files.forEach(filename => {
         const img = new Image();
         const src = `${process.env.PUBLIC_URL}/images/${filename}`;
         img.src = src;
@@ -76,7 +108,7 @@ const ImageList = () => {
             height: img.naturalHeight,
           });
           imagesProcessed++;
-          if (imagesProcessed === imageFiles.length) {
+          if (imagesProcessed === files.length) {
             setPhotos(loadedPhotos);
             setLoading(false);
           }
@@ -85,9 +117,8 @@ const ImageList = () => {
         img.onerror = () => {
           console.error(`Error loading image: ${filename}`);
           imagesProcessed++;
-          // Optionally, add a placeholder or skip
-          if (imagesProcessed === imageFiles.length) {
-            setPhotos(loadedPhotos); // Still update state with successfully loaded images
+          if (imagesProcessed === files.length) {
+            setPhotos(loadedPhotos);
             setLoading(false);
           }
         };
@@ -95,7 +126,7 @@ const ImageList = () => {
     };
 
     fetchImageDimensions();
-  }, []); // Empty dependency array means this runs once on mount, as imageFiles is static here
+  }, []);
 
   if (loading) {
     return <p>Loading images and dimensions...</p>;
