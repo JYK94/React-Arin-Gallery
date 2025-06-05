@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/React-Arin-Gallery/static/css/main.8b24104c.chunk.css",
-    "main.js": "/React-Arin-Gallery/static/js/main.92324e0c.chunk.js",
-    "main.js.map": "/React-Arin-Gallery/static/js/main.92324e0c.chunk.js.map",
+    "main.js": "/React-Arin-Gallery/static/js/main.3b71525c.chunk.js",
+    "main.js.map": "/React-Arin-Gallery/static/js/main.3b71525c.chunk.js.map",
     "runtime-main.js": "/React-Arin-Gallery/static/js/runtime-main.16919106.js",
     "runtime-main.js.map": "/React-Arin-Gallery/static/js/runtime-main.16919106.js.map",
     "static/js/2.8f17e79c.chunk.js": "/React-Arin-Gallery/static/js/2.8f17e79c.chunk.js",
     "static/js/2.8f17e79c.chunk.js.map": "/React-Arin-Gallery/static/js/2.8f17e79c.chunk.js.map",
     "index.html": "/React-Arin-Gallery/index.html",
-    "precache-manifest.d46b52809d9613c8d37a29d02f2aad00.js": "/React-Arin-Gallery/precache-manifest.d46b52809d9613c8d37a29d02f2aad00.js",
+    "precache-manifest.bf97f1e09ca375bc262d53424d91a78e.js": "/React-Arin-Gallery/precache-manifest.bf97f1e09ca375bc262d53424d91a78e.js",
     "service-worker.js": "/React-Arin-Gallery/service-worker.js",
     "static/css/main.8b24104c.chunk.css.map": "/React-Arin-Gallery/static/css/main.8b24104c.chunk.css.map",
     "static/js/2.8f17e79c.chunk.js.LICENSE.txt": "/React-Arin-Gallery/static/js/2.8f17e79c.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.16919106.js",
     "static/js/2.8f17e79c.chunk.js",
     "static/css/main.8b24104c.chunk.css",
-    "static/js/main.92324e0c.chunk.js"
+    "static/js/main.3b71525c.chunk.js"
   ]
 }
